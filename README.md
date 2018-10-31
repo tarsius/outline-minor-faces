@@ -4,9 +4,9 @@ Heading faces for `outline-minor-mode`
 Unlike `outline-mode`, `outline-minor-mode` does not change
 the appearance of headings to look different from comments.
 
-This package defined faces `outline-minor-N`, which inherit
-from the respective `outline-N` faces used in `outline-mode`
-and arranges for them to be used in `outline-minor-mode`.
+This package defines the faces `outline-minor-N`, which inherit
+from the respective `outline-N` faces used in `outline-mode` and
+arranges for them to be used in `outline-minor-mode`.
 
 ### Usage
 
