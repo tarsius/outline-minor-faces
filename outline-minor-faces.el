@@ -42,7 +42,8 @@
 ;;; Code:
 
 (defface outline-minor-0
-  '((t (:weight bold :background "light grey")))
+  '((((class color) (background light)) :weight bold :background "light grey")
+    (((class color) (background  dark)) :weight bold :background "grey20"))
   "Face that other `outline-minor-N' faces inherit from."
   :group 'outlines)
 
