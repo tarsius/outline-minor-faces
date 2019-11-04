@@ -1,6 +1,6 @@
 ;;; outline-minor-faces.el --- Headings faces for outline-minor-mode  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2018 Jonas Bernoulli
+;; Copyright (C) 2018-2019  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Homepage: https://github.com/tarsius/bicycle
@@ -42,8 +42,14 @@
 ;;; Code:
 
 (defface outline-minor-0
-  '((((class color) (background light)) :weight bold :background "light grey")
-    (((class color) (background  dark)) :weight bold :background "grey20"))
+  `((((class color) (background light))
+     ,@(and (>= emacs-major-version 27) '(:extend t))
+     :weight bold
+     :background "light grey")
+    (((class color) (background  dark))
+     ,@(and (>= emacs-major-version 27) '(:extend t))
+     :weight bold
+     :background "grey20"))
   "Face that other `outline-minor-N' faces inherit from."
   :group 'outlines)
 
