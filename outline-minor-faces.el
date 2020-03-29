@@ -117,14 +117,14 @@ string."
       (and (re-search-forward regexp limit t)
            (not (nth 8 (syntax-ppss)))))))
 
-(defun outline-minor-faces--font-lock-keywords ()
-  `((eval . (list ,(outline-minor-faces--syntactic-matcher
-                    (or outline-minor-faces-regexp
-                        (concat "^\\(?:"
-                                (if (derived-mode-p 'lisp-mode 'emacs-lisp-mode)
-                                    ";;;\\(;* [^ \t\n]\\)"
-                                  outline-regexp)
-                                "\\)\\(?:.+\n\\|\n?\\)")))
+(defvar outline-minor-faces--font-lock-keywords
+  '((eval . (list (outline-minor-faces--syntactic-matcher
+                   (or outline-minor-faces-regexp
+                       (concat "^\\(?:"
+                               (if (derived-mode-p 'lisp-mode 'emacs-lisp-mode)
+                                   ";;;\\(;* [^ \t\n]\\)"
+                                 outline-regexp)
+                               "\\)\\(?:.+\n\\|\n?\\)")))
                   0 '(outline-minor-faces--get-face) t))))
 
 (defvar-local outline-minor-faces--top-level nil)
@@ -152,7 +152,7 @@ string."
 ;;;###autoload
 (defun outline-minor-faces-add-font-lock-keywords ()
   (ignore-errors
-    (font-lock-add-keywords nil (outline-minor-faces--font-lock-keywords) t)
+    (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
     (save-restriction
       (widen)
       (font-lock-flush)
