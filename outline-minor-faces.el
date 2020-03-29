@@ -104,13 +104,27 @@ If this is nil, then a regular expression based on
 be used directly because it is only supposed to match the
 beginning of a heading.")
 
+(defun outline-minor-faces--syntactic-matcher (regexp)
+  "Return a matcher that matches REGEXP only outside of strings.
+
+Returns REGEXP directly for modes where `font-lock-keywords-only'
+is non-nil because Font Lock does not mark strings and comments
+for those modes, and the matcher will not know what is/is not a
+string."
+  (if font-lock-keywords-only
+      regexp
+    (lambda (limit)
+      (and (re-search-forward regexp limit t)
+           (not (nth 8 (syntax-ppss)))))))
+
 (defun outline-minor-faces--font-lock-keywords ()
-  `((eval . (list ,(or outline-minor-faces-regexp
-                       (concat "^\\(?:"
-                               (if (derived-mode-p 'lisp-mode 'emacs-lisp-mode)
-                                   ";;;\\(;* [^ \t\n]\\)"
-                                 outline-regexp)
-                               "\\)\\(?:.+\n\\|\n?\\)"))
+  `((eval . (list ,(outline-minor-faces--syntactic-matcher
+                    (or outline-minor-faces-regexp
+                        (concat "^\\(?:"
+                                (if (derived-mode-p 'lisp-mode 'emacs-lisp-mode)
+                                    ";;;\\(;* [^ \t\n]\\)"
+                                  outline-regexp)
+                                "\\)\\(?:.+\n\\|\n?\\)")))
                   0 '(outline-minor-faces--get-face) t))))
 
 (defvar-local outline-minor-faces--top-level nil)
