@@ -115,7 +115,7 @@ string."
       regexp
     (lambda (limit)
       (and (re-search-forward regexp limit t)
-           (not (nth 8 (syntax-ppss)))))))
+           (not (nth 3 (syntax-ppss (match-beginning 0))))))))
 
 (defvar outline-minor-faces--font-lock-keywords
   '((eval . (list (outline-minor-faces--syntactic-matcher
