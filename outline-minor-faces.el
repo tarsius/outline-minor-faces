@@ -97,6 +97,12 @@
   [outline-minor-1 outline-minor-2 outline-minor-3 outline-minor-4
    outline-minor-5 outline-minor-6 outline-minor-7 outline-minor-8])
 
+(defvar outline-minor-faces--lisp-modes
+  '(lisp-mode
+    clojure-mode
+    emacs-lisp-mode
+    scheme-mode))
+
 (defvar-local outline-minor-faces-regexp nil
   "Regular expression to match the complete line of a heading.
 If this is nil, then a regular expression based on
@@ -121,7 +127,8 @@ string."
   '((eval . (list (outline-minor-faces--syntactic-matcher
                    (or outline-minor-faces-regexp
                        (concat "^\\(?:"
-                               (if (derived-mode-p 'lisp-mode 'emacs-lisp-mode)
+                               (if (apply #'derived-mode-p
+                                          outline-minor-faces--lisp-modes)
                                    ";;;\\(;* [^ \t\n]\\)"
                                  outline-regexp)
                                "\\)\\(?:.+\n\\|\n?\\)")))
