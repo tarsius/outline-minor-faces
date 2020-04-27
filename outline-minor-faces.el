@@ -126,12 +126,18 @@ string."
 (defvar outline-minor-faces--font-lock-keywords
   '((eval . (list (outline-minor-faces--syntactic-matcher
                    (or outline-minor-faces-regexp
-                       (concat "^\\(?:"
-                               (if (apply #'derived-mode-p
-                                          outline-minor-faces--lisp-modes)
-                                   ";;;\\(;* [^ \t\n]\\)"
-                                 outline-regexp)
-                               "\\)\\(?:.+\n\\|\n?\\)")))
+                       (concat
+                        "^\\(?:"
+                        (cond
+                         ((not (apply #'derived-mode-p
+                                      outline-minor-faces--lisp-modes))
+                          outline-regexp)
+                         ((string-suffix-p "\|###autoload\\)\\|(" outline-regexp)
+                          (concat (substring outline-regexp 0 -18) "\\)"))
+                         ((string-suffix-p "\\|(" outline-regexp)
+                          (substring outline-regexp 0 -3))
+                         (t outline-regexp))
+                        "\\)\\(?:.+\n\\|\n?\\)")))
                   0 '(outline-minor-faces--get-face) t))))
 
 (defvar-local outline-minor-faces--top-level nil)
