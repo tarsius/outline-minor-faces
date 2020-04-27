@@ -98,7 +98,7 @@
    outline-minor-5 outline-minor-6 outline-minor-7 outline-minor-8])
 
 (defvar-local outline-minor-faces-regexp nil
-  "Regular expression to match a complete of a heading.
+  "Regular expression to match the complete line of a heading.
 If this is nil, then a regular expression based on
 `outline-regexp' is used.  The value of that variable cannot
 be used directly because it is only supposed to match the
