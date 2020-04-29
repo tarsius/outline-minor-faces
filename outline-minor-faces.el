@@ -140,13 +140,16 @@ string."
                         "\\)\\(?:.+\n\\|\n?\\)")))
                   0 '(outline-minor-faces--get-face) t))))
 
-(defvar-local outline-minor-faces--top-level nil)
+;;;###autoload
+(defun outline-minor-faces-add-font-lock-keywords ()
+  (ignore-errors
+    (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
+    (save-restriction
+      (widen)
+      (font-lock-flush)
+      (font-lock-ensure))))
 
-(defun outline-minor-faces--level ()
-  (save-excursion
-    (beginning-of-line)
-    (looking-at outline-regexp)
-    (funcall outline-level)))
+(defvar-local outline-minor-faces--top-level nil)
 
 (defun outline-minor-faces--get-face ()
   (save-excursion
@@ -162,14 +165,11 @@ string."
                             (outline-minor-faces--level)))))
              (length outline-minor-faces)))))
 
-;;;###autoload
-(defun outline-minor-faces-add-font-lock-keywords ()
-  (ignore-errors
-    (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
-    (save-restriction
-      (widen)
-      (font-lock-flush)
-      (font-lock-ensure))))
+(defun outline-minor-faces--level ()
+  (save-excursion
+    (beginning-of-line)
+    (looking-at outline-regexp)
+    (funcall outline-level)))
 
 ;;; _
 (provide 'outline-minor-faces)
