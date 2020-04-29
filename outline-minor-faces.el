@@ -149,20 +149,12 @@ string."
       (font-lock-flush)
       (font-lock-ensure))))
 
-(defvar-local outline-minor-faces--top-level nil)
-
 (defun outline-minor-faces--get-face ()
   (save-excursion
     (goto-char (match-beginning 0))
     (aref outline-minor-faces
-          ;; If we depended on `bicycle', then we could use:
-          ;; (% (- (bicycle--level) (bicycle--top-level)) ...)
           (% (- (outline-minor-faces--level)
-                (or outline-minor-faces--top-level
-                    (setq outline-minor-faces--top-level
-                          (save-excursion
-                            (goto-char (point-min))
-                            (outline-minor-faces--level)))))
+                (outline-minor-faces--top-level))
              (length outline-minor-faces)))))
 
 (defun outline-minor-faces--level ()
@@ -170,6 +162,15 @@ string."
     (beginning-of-line)
     (and (looking-at outline-regexp)
          (funcall outline-level))))
+
+(defvar-local outline-minor-faces--top-level nil)
+
+(defun outline-minor-faces--top-level ()
+  (or outline-minor-faces--top-level
+      (setq outline-minor-faces--top-level
+            (save-excursion
+              (goto-char (point-min))
+              (outline-minor-faces--level)))))
 
 ;;; _
 (provide 'outline-minor-faces)
