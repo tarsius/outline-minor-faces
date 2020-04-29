@@ -41,6 +41,8 @@
 
 ;;; Code:
 
+(require 'outline)
+
 (defface outline-minor-0
   `((((class color) (background light))
      ,@(and (>= emacs-major-version 27) '(:extend t))
