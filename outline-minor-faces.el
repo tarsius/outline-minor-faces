@@ -167,12 +167,12 @@ string."
 
 (defun outline-minor-faces--top-level ()
   (or outline-minor-faces--top-level
-      (setq outline-minor-faces--top-level
-            (save-excursion
-              (goto-char (point-min))
-              (or (outline-minor-faces--level)
-                  (and (outline-next-heading)
-                       (outline-minor-faces--level)))))))
+      (save-excursion
+        (goto-char (point-min))
+        (let ((min 1000))
+          (while (outline-next-heading)
+            (setq min (min min (outline-minor-faces--level))))
+          (setq outline-minor-faces--top-level min)))))
 
 ;;; _
 (provide 'outline-minor-faces)
