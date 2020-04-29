@@ -170,7 +170,9 @@ string."
       (setq outline-minor-faces--top-level
             (save-excursion
               (goto-char (point-min))
-              (outline-minor-faces--level)))))
+              (or (outline-minor-faces--level)
+                  (and (outline-next-heading)
+                       (outline-minor-faces--level)))))))
 
 ;;; _
 (provide 'outline-minor-faces)
