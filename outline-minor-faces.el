@@ -168,8 +168,8 @@ string."
 (defun outline-minor-faces--level ()
   (save-excursion
     (beginning-of-line)
-    (looking-at outline-regexp)
-    (funcall outline-level)))
+    (and (looking-at outline-regexp)
+         (funcall outline-level))))
 
 ;;; _
 (provide 'outline-minor-faces)
