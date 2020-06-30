@@ -29,8 +29,8 @@
 ;; the appearance of headings to look different from comments.
 
 ;; This package defines the faces `outline-minor-N', which inherit
-;; from the respective `outline-N' faces used in `outline-mode' and
-;; arranges for them to be used in `outline-minor-mode'.
+;; from the respective `outline-N' faces used in `outline-mode'
+;; and arranges for them to be used in `outline-minor-mode'.
 
 ;; Usage:
 ;;
