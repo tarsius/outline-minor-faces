@@ -175,7 +175,7 @@ string."
   (or outline-minor-faces--top-level
       (save-excursion
         (goto-char (point-min))
-        (let ((min 1000))
+        (let ((min (or (outline-minor-faces--level) 1000)))
           (while (outline-next-heading)
             (setq min (min min (outline-minor-faces--level))))
           (setq outline-minor-faces--top-level min)))))
