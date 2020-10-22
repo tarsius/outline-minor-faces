@@ -158,10 +158,13 @@ string."
 (defun outline-minor-faces--get-face ()
   (save-excursion
     (goto-char (match-beginning 0))
-    (aref outline-minor-faces
-          (% (- (outline-minor-faces--level)
-                (outline-minor-faces--top-level))
-             (length outline-minor-faces)))))
+    (let* ((level (outline-minor-faces--level))
+           (index (- level (outline-minor-faces--top-level))))
+      (when (< index 0)
+        (setq outline-minor-faces--top-level nil)
+        (setq index (- level (outline-minor-faces--top-level))))
+      (aref outline-minor-faces
+            (% index (length outline-minor-faces))))))
 
 (defun outline-minor-faces--level ()
   (save-excursion
