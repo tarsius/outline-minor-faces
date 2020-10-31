@@ -109,6 +109,8 @@
     emacs-lisp-mode
     scheme-mode))
 
+(defvar-local outline-minor-faces--top-level nil)
+
 (defvar-local outline-minor-faces-regexp nil
   "Regular expression to match the complete line of a heading.
 If this is nil, then a regular expression based on
@@ -171,8 +173,6 @@ string."
     (beginning-of-line)
     (and (looking-at outline-regexp)
          (funcall outline-level))))
-
-(defvar-local outline-minor-faces--top-level nil)
 
 (defun outline-minor-faces--top-level ()
   (or outline-minor-faces--top-level
