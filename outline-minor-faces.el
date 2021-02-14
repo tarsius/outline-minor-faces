@@ -1,9 +1,9 @@
 ;;; outline-minor-faces.el --- Headings faces for outline-minor-mode  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2018-2020  Jonas Bernoulli
+;; Copyright (C) 2018-2021  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
-;; Homepage: https://github.com/tarsius/bicycle
+;; Homepage: https://github.com/tarsius/outline-minor-faces
 ;; Keywords: outlines
 
 ;; Package-Requires: ((emacs "25.1"))
