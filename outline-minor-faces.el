@@ -1,6 +1,6 @@
 ;;; outline-minor-faces.el --- Headings faces for outline-minor-mode  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2018-2021  Jonas Bernoulli
+;; Copyright (C) 2018-2022  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Homepage: https://github.com/tarsius/outline-minor-faces
@@ -39,7 +39,7 @@
 ;;   (use-package outline-minor-faces
 ;;     :after outline
 ;;     :config (add-hook 'outline-minor-mode-hook
-;;                       'outline-minor-faces-add-font-lock-keywords))
+;;                       #'outline-minor-faces-add-font-lock-keywords))
 
 ;; If you want to only enable these faces in certain major-modes,
 ;; then add this function to their hooks instead of to the above
