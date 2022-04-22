@@ -6,7 +6,7 @@
 ;; Homepage: https://github.com/tarsius/outline-minor-faces
 ;; Keywords: outlines
 
-;; Package-Requires: ((emacs "25.1"))
+;; Package-Requires: ((emacs "25.1") (compat "28.1.1.0"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -47,6 +47,7 @@
 
 ;;; Code:
 
+(require 'compat)
 (require 'outline)
 
 (defface outline-minor-0
