@@ -100,6 +100,11 @@
   "Level 8 headings in `outline-minor-mode'."
   :group 'outlines)
 
+(defface outline-minor-file-local-prop-line
+  '((t (:inherit (font-lock-comment-face outline-minor-1) :weight normal)))
+  "Face used for file-local variables settings on the -*- line."
+  :group 'outlines)
+
 (defvar outline-minor-faces
   [outline-minor-1 outline-minor-2 outline-minor-3 outline-minor-4
    outline-minor-5 outline-minor-6 outline-minor-7 outline-minor-8])
@@ -147,7 +152,8 @@ string."
                           (substring outline-regexp 0 -3))
                          (t outline-regexp))
                         "\\)\\(?:.+\n\\|\n?\\)")))
-                  0 '(outline-minor-faces--get-face) t))))
+                  0 '(outline-minor-faces--get-face) t))
+    ("-\\*-.*-\\*-" 0 'outline-minor-file-local-prop-line t)))
 
 ;;;###autoload
 (defun outline-minor-faces-add-font-lock-keywords ()
