@@ -37,11 +37,12 @@
 ;;   (use-package outline-minor-faces
 ;;     :after outline
 ;;     :config (add-hook 'outline-minor-mode-hook
-;;                       #'outline-minor-faces-add-font-lock-keywords))
+;;                       #'outline-minor-faces-mode))
 
 ;; If you want to only enable these faces in certain major-modes,
-;; then add this function to their hooks instead of to the above
-;; hook.
+;; then add `outline-minor-faces-mode' to their hooks instead of
+;; to the above hook, but make sure `outline-minor-mode' is
+;; enabled first.
 
 ;;; Code:
 
@@ -156,6 +157,25 @@ string."
     ("-\\*-.*-\\*-" 0 'outline-minor-file-local-prop-line t)))
 
 ;;;###autoload
+(define-minor-mode outline-minor-faces-mode
+  "Minor mode that adds heading faces for `outline-minor-mode'."
+  :lighter ""
+  (unless (called-interactively-p 'any)
+    (setq outline-minor-faces-mode outline-minor-mode))
+  (if outline-minor-faces-mode
+      (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
+    (font-lock-remove-keywords nil outline-minor-faces--font-lock-keywords))
+  (when font-lock-mode
+    (if (and (fboundp 'font-lock-flush)
+             (fboundp 'font-lock-ensure))
+        (save-restriction
+          (widen)
+          (font-lock-flush)
+          (font-lock-ensure))
+      (with-no-warnings
+        (font-lock-fontify-buffer)))))
+
+;;;###autoload
 (defun outline-minor-faces-add-font-lock-keywords ()
   (ignore-errors
     (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
@@ -163,6 +183,8 @@ string."
       (widen)
       (font-lock-flush)
       (font-lock-ensure))))
+(make-obsolete 'outline-minor-faces-add-font-lock-keywords
+               #'outline-minor-faces-mode "Outline-Minor-Faces 0.3.0")
 
 (defun outline-minor-faces--get-face ()
   (save-excursion
