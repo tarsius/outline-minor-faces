@@ -154,7 +154,7 @@ string."
                          ((string-suffix-p "\\|(" outline-regexp)
                           (substring outline-regexp 0 -3))
                          (t outline-regexp))
-                        "\\)\\(?:.+\n\\|\n?\\)")))
+                        "\\).*\n?")))
                   0 '(outline-minor-faces--get-face) t))
     ("-\\*-.*-\\*-" 0 'outline-minor-file-local-prop-line t)))
 
