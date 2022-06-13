@@ -147,6 +147,8 @@ string."
                          ((not (apply #'derived-mode-p
                                       outline-minor-faces--lisp-modes))
                           outline-regexp)
+                         ((string-suffix-p "\\(autoload\\)\\)" outline-regexp)
+                          ";;;\\(;* [^ \t\n]\\)")
                          ((string-suffix-p "\|###autoload\\)\\|(" outline-regexp)
                           (concat (substring outline-regexp 0 -18) "\\)"))
                          ((string-suffix-p "\\|(" outline-regexp)
