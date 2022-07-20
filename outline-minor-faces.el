@@ -146,10 +146,13 @@ string."
                          ((not (apply #'derived-mode-p
                                       outline-minor-faces--lisp-modes))
                           outline-regexp)
+                         ;; `emacs-lisp-mode' Emacs >= 29
                          ((string-suffix-p "\\(autoload\\)\\)" outline-regexp)
                           ";;;\\(;* [^ \t\n]\\)")
+                         ;; `emacs-lisp-mode' Emacs <= 28
                          ((string-suffix-p "\|###autoload\\)\\|(" outline-regexp)
                           (concat (substring outline-regexp 0 -18) "\\)"))
+                         ;; `lisp-data-mode', `lisp-mode' et al.
                          ((string-suffix-p "\\|(" outline-regexp)
                           (substring outline-regexp 0 -3))
                          (t outline-regexp))
