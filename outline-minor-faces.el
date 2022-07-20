@@ -152,6 +152,9 @@ string."
                          ;; `emacs-lisp-mode' Emacs <= 28
                          ((string-suffix-p "\|###autoload\\)\\|(" outline-regexp)
                           (concat (substring outline-regexp 0 -18) "\\)"))
+                         ;; `scheme-mode'
+                         ((string-suffix-p "\\|(...." outline-regexp)
+                          (substring outline-regexp 0 -7))
                          ;; `lisp-data-mode', `lisp-mode' et al.
                          ((string-suffix-p "\\|(" outline-regexp)
                           (substring outline-regexp 0 -3))
