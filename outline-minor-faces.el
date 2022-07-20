@@ -111,9 +111,8 @@
    outline-minor-5 outline-minor-6 outline-minor-7 outline-minor-8])
 
 (defvar outline-minor-faces--lisp-modes
-  '(lisp-mode
+  '(lisp-data-mode lisp-mode emacs-lisp-mode
     clojure-mode
-    emacs-lisp-mode
     scheme-mode))
 
 (defvar-local outline-minor-faces--top-level nil)
