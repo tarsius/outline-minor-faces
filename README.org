@@ -19,3 +19,8 @@ and arranges for them to be used in ~outline-minor-mode~.
 If you want to only enable these faces in certain major-modes, then
 add ~outline-minor-faces-mode~ to their hooks instead of to the above
 hook, but make sure ~outline-minor-mode~ is enabled first.
+
+#+html: <br><br>
+#+html: <a href="https://github.com/tarsius/outline-minor-faces/actions/workflows/compile.yml"><img alt="Compile" src="https://github.com/tarsius/outline-minor-faces/actions/workflows/compile.yml/badge.svg"/></a>
+#+html: <a href="https://stable.melpa.org/#/outline-minor-faces"><img alt="MELPA Stable" src="https://stable.melpa.org/packages/outline-minor-faces-badge.svg"/></a>
+#+html: <a href="https://melpa.org/#/outline-minor-faces"><img alt="MELPA" src="https://melpa.org/packages/outline-minor-faces-badge.svg"/></a>
