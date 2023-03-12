@@ -167,7 +167,9 @@ string."
 (define-minor-mode outline-minor-faces-mode
   "Minor mode that adds heading faces for `outline-minor-mode'."
   :lighter ""
-  (unless (called-interactively-p 'any)
+  (unless arg
+    ;; Toggle both modes together due to
+    ;; (add-hook 'outline-minor-mode-hook 'outline-minor-faces-mode).
     (setq outline-minor-faces-mode outline-minor-mode))
   (if outline-minor-faces-mode
       (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
