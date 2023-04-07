@@ -184,17 +184,6 @@ string."
       (with-no-warnings
         (font-lock-fontify-buffer)))))
 
-;;;###autoload
-(defun outline-minor-faces-add-font-lock-keywords ()
-  (ignore-errors
-    (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
-    (save-restriction
-      (widen)
-      (font-lock-flush)
-      (font-lock-ensure))))
-(make-obsolete 'outline-minor-faces-add-font-lock-keywords
-               #'outline-minor-faces-mode "Outline-Minor-Faces 0.3.0")
-
 (defun outline-minor-faces--get-face ()
   (save-excursion
     (goto-char (match-beginning 0))
