@@ -13,7 +13,7 @@ and arranges for them to be used in ~outline-minor-mode~.
   (use-package outline-minor-faces
     :after outline
     :config (add-hook 'outline-minor-mode-hook
-		      #'outline-minor-faces-mode))
+                      #'outline-minor-faces-mode))
 #+end_src
 
 If you want to only enable these faces in certain major-modes, then
