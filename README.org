@@ -23,6 +23,9 @@ These faces are what gave this package its name, but nowadays they
 inherit from the built-in faces by default, and are preserved mostly
 for historic reasons, i.e., to avoid having to rename this package.
 
+To further improve the appearance of collapsed sections, check out
+the [[https://github.com/tarsius/backline][backline]] package.
+
 #+html: <br><br>
 #+html: <a href="https://github.com/tarsius/outline-minor-faces/actions/workflows/compile.yml"><img alt="Compile" src="https://github.com/tarsius/outline-minor-faces/actions/workflows/compile.yml/badge.svg"/></a>
 #+html: <a href="https://stable.melpa.org/#/outline-minor-faces"><img alt="MELPA Stable" src="https://stable.melpa.org/packages/outline-minor-faces-badge.svg"/></a>

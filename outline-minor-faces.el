@@ -47,6 +47,9 @@
 ;; inherit from the built-in faces by default, and are preserved mostly
 ;; for historic reasons, i.e., to avoid having to rename this package.
 
+;; To further improve the appearance of collapsed sections, check out
+;; the `backline' package.
+
 ;;; Code:
 
 (require 'compat)
