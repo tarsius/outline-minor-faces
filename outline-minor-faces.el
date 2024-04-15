@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2018-2024 Jonas Bernoulli
 
-;; Author: Jonas Bernoulli <jonas@bernoul.li>
+;; Author: Jonas Bernoulli <emacs.outline-minor-faces@jonas.bernoulli.dev>
 ;; Homepage: https://github.com/tarsius/outline-minor-faces
 ;; Keywords: faces outlines
 
