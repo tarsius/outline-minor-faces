@@ -202,8 +202,10 @@ string."
 
 (defun outline-minor-faces--level ()
   (save-excursion
-    (beginning-of-line)
-    (and (looking-at outline-regexp)
+    (and (if (bound-and-true-p outline-search-function)
+             (funcall outline-search-function nil nil nil t)
+           (beginning-of-line)
+           (looking-at outline-regexp))
          (funcall outline-level))))
 
 (defun outline-minor-faces--top-level ()
