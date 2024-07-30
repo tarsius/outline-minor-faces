@@ -202,8 +202,11 @@ string."
 
 (defun outline-minor-faces--level ()
   (save-excursion
-    (beginning-of-line)
-    (and (looking-at outline-regexp)
+    (and (if (bound-and-true-p outline-search-function)
+             (funcall outline-search-function nil nil nil t)
+           ;; Emacs < 29.1 / d9d8a2eba92c4e6ef4145f222c43c86f75875ce2.
+           (beginning-of-line)
+           (looking-at outline-regexp))
          (funcall outline-level))))
 
 (defun outline-minor-faces--top-level ()
