@@ -1,13 +1,13 @@
 ;;; outline-minor-faces.el --- Highlight only section headings  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2018-2024 Jonas Bernoulli
+;; Copyright (C) 2018-2025 Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <emacs.outline-minor-faces@jonas.bernoulli.dev>
 ;; Homepage: https://github.com/tarsius/outline-minor-faces
 ;; Keywords: faces outlines
 
-;; Package-Version: 1.1.0
-;; Package-Requires: ((emacs "26.1") (compat "30.0.0.0"))
+;; Package-Version: 1.1.1
+;; Package-Requires: ((emacs "26.1") (compat "30.0.1.0"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
