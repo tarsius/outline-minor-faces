@@ -140,11 +140,12 @@ Returns REGEXP directly for modes where `font-lock-keywords-only'
 is non-nil because Font Lock does not mark strings and comments
 for those modes, and the matcher will not know what is/is not a
 string."
-  (if font-lock-keywords-only
-      regexp
-    (lambda (limit)
+  (cond
+   (outline-search-function #'ignore)
+   (font-lock-keywords-only regexp)
+   ((lambda (limit)
       (and (re-search-forward regexp limit t)
-           (not (nth 3 (syntax-ppss (match-beginning 0))))))))
+           (not (nth 3 (syntax-ppss (match-beginning 0)))))))))
 
 (defvar outline-minor-faces--font-lock-keywords
   '((eval . (list (outline-minor-faces--syntactic-matcher
