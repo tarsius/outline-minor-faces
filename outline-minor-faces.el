@@ -141,7 +141,10 @@ is non-nil because Font Lock does not mark strings and comments
 for those modes, and the matcher will not know what is/is not a
 string."
   (cond
-   (outline-search-function #'ignore)
+   ((and outline-search-function
+         ;; Emacs >= 31
+         (not (eq outline-search-function 'elisp-outline-search)))
+    #'ignore)
    (font-lock-keywords-only regexp)
    ((lambda (limit)
       (and (re-search-forward regexp limit t)
