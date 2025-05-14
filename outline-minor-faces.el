@@ -141,8 +141,12 @@ is non-nil because Font Lock does not mark strings and comments
 for those modes, and the matcher will not know what is/is not a
 string."
   (cond
+   ;; Assume that if a mode defines such a function, it likely is
+   ;; benefitial to use it.  We know that `elisp-outline-search'
+   ;; (added in Emacs 31) is unnecessary here though.  It's purpose
+   ;; is to avoid matching parens at the bol inside strings, but we
+   ;; don't even try to match parens at all, so that's not relevant.
    ((and outline-search-function
-         ;; Emacs >= 31
          (not (eq outline-search-function 'elisp-outline-search)))
     #'ignore)
    (font-lock-keywords-only regexp)
@@ -206,8 +210,10 @@ string."
 
 (defun outline-minor-faces--level ()
   (save-excursion
-    (and (if (bound-and-true-p outline-search-function)
-             (funcall outline-search-function nil nil nil t)
+    (and (if-let ((fn (bound-and-true-p outline-search-function))
+                  ;; See `outline-minor-faces--syntactic-matcher'.
+                  ((not (eq fn 'elisp-outline-search))))
+             (funcall fn nil nil nil t)
            (beginning-of-line)
            (looking-at outline-regexp))
          (funcall outline-level))))
