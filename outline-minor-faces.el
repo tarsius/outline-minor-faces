@@ -146,7 +146,7 @@ string."
    ;; (added in Emacs 31) is unnecessary here though.  It's purpose
    ;; is to avoid matching parens at the bol inside strings, but we
    ;; don't even try to match parens at all, so that's not relevant.
-   ((and outline-search-function
+   ((and (bound-and-true-p outline-search-function)
          (not (eq outline-search-function 'elisp-outline-search)))
     #'ignore)
    (font-lock-keywords-only regexp)
