@@ -191,11 +191,7 @@ string."
   (if outline-minor-faces-mode
       (font-lock-add-keywords nil outline-minor-faces--font-lock-keywords t)
     (font-lock-remove-keywords nil outline-minor-faces--font-lock-keywords))
-  (when font-lock-mode
-    (save-restriction
-      (widen)
-      (font-lock-flush)
-      (font-lock-ensure))))
+  (font-lock-flush))
 
 (defun outline-minor-faces--get-face ()
   (save-excursion
