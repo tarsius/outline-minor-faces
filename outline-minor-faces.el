@@ -7,7 +7,9 @@
 ;; Keywords: faces outlines
 
 ;; Package-Version: 1.1.4
-;; Package-Requires: ((emacs "26.1") (compat "30.1"))
+;; Package-Requires: (
+;;     (emacs  "27.1")
+;;     (compat "30.1"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -57,12 +59,12 @@
 (require 'outline)
 
 (defface outline-minor-0
-  `((((class color) (background light))
-     ,@(and (>= emacs-major-version 27) '(:extend t))
+  '((((class color) (background light))
+     :extend t
      :weight bold
      :background "light grey")
     (((class color) (background  dark))
-     ,@(and (>= emacs-major-version 27) '(:extend t))
+     :extend t
      :weight bold
      :background "grey20"))
   "Face that other `outline-minor-N' faces inherit from."
