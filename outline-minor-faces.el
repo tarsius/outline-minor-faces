@@ -144,7 +144,7 @@ for those modes, and the matcher will not know what is/is not a
 string."
   (cond
    ;; Assume that if a mode defines such a function, it likely is
-   ;; benefitial to use it.  We know that `elisp-outline-search'
+   ;; beneficial to use it.  We know that `elisp-outline-search'
    ;; (added in Emacs 31) is unnecessary here though.  It's purpose
    ;; is to avoid matching parens at the bol inside strings, but we
    ;; don't even try to match parens at all, so that's not relevant.
