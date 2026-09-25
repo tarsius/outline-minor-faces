@@ -8,8 +8,9 @@
 
 ;; Package-Version: 1.2.4
 ;; Package-Requires: (
-;;     (emacs  "28.1")
-;;     (compat "31.0"))
+;;     (emacs   "28.1")
+;;     (compat  "31.0")
+;;     (cond-let "1.1"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -56,6 +57,7 @@
 ;;; Code:
 
 (require 'compat)
+(require 'cond-let)
 (require 'outline)
 
 (defface outline-minor-0
@@ -232,5 +234,17 @@ string."
 ;; Local Variables:
 ;; indent-tabs-mode: nil
 ;; lisp-indent-local-overrides: ((cond . 0) (interactive . 0))
+;; read-symbol-shorthands: (
+;;   ("and$"       . "cond-let--and$")
+;;   ("thread$"    . "cond-let--thread$")
+;;   ("when$"      . "cond-let--when$")
+;;   ("and-let*"   . "cond-let--and-let*")
+;;   ("and-let"    . "cond-let--and-let")
+;;   ("if-let*"    . "cond-let--if-let*")
+;;   ("if-let"     . "cond-let--if-let")
+;;   ("when-let*"  . "cond-let--when-let*")
+;;   ("when-let"   . "cond-let--when-let")
+;;   ("while-let*" . "cond-let--while-let*")
+;;   ("while-let"  . "cond-let--while-let"))
 ;; End:
 ;;; outline-minor-faces.el ends here
